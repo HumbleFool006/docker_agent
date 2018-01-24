@@ -1,0 +1,7 @@
+six
+pyparsing
+futures
+xmljson
+psutil
+docker
+pymysql
