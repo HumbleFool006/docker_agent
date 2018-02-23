@@ -45,4 +45,4 @@ Also, several integrations might be incomplete. See the "Contribute" section.
 
 ## Contribute
 
-If you notice a limitation or a bug with this container, feel free to open a [Github issue](https://github.com/DataDog/docker-dd-agent/issues). If it concerns the Agent itself, please refer to its [documentation](https://docs.datadoghq.com/) or its [wiki](https://github.com/DataDog/dd-agent/wiki).
+If you notice a limitation or a bug with this container, feel free to open a [Github issue](https://github.com/HumbleFool006/docker_agent/issues).
