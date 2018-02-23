@@ -35,13 +35,7 @@ docker run -d --name site24x7-agent \
 
 ## Limitations
 
-The Agent won't be able to collect disk metrics from volumes that are not mounted to the Agent container. If you want to monitor additional partitions, make sure to share them to the container in your docker run command (e.g. `-v /data:/data:ro`)
-
-Docker isolates containers from the host. As a result, the Agent won't have access to all host metrics.
-
-
-Also, several integrations might be incomplete. See the "Contribute" section.
-
+Only volumes that are mounted into the container can have the disk metrics being reported
 
 ## Contribute
 
