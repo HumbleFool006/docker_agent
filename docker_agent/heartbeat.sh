@@ -1,4 +1,6 @@
 #!/bin/bash
+#Author : Arunagiriswaran E
+#Company : ZOHOCORP
 export COLUMNS=5000
 MON_AGENT_PROG_NAME="MonitoringAgent.py"
 MON_AGENT_WATCHDOG_PROG_NAME="MonitoringAgentWatchdog.py"
