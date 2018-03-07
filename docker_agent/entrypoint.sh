@@ -1,4 +1,6 @@
 #!/bin/bash
+#Author : Arunagiriswaran E
+#Company : ZOHOCORP
 SUCCESS=0
 WARNING=1
 FAILURE=2
@@ -33,6 +35,12 @@ fi
 
 if [ "$SEVERE_FLAG" == "$BOOL_TRUE" ]; then
 	printf "$ERROR_MSG Hence quitting!!! \n"
+	exit $FAILURE
+fi
+
+check_result=`/opt/site24x7/venv/bin/python singleinstance.py`
+if [ "$?" = "1" ]; then
+	printf "$check_result"
 	exit $FAILURE
 fi
 
@@ -118,9 +126,13 @@ getEnvValues(){
 
 }
 
+startSSHServer(){
+	/etc/init.d/ssh restart
+}
+
 constructInstallationParam(){
 	if [ ! -d $MON_AGENT_HOME ]; then
-		bash Site24x7MonitoringAgent.install -i -key="$KEY_VALUE" -dn="$DN_VALUE" -gn="$GN_VALUE" -ct="$CT_VALUE" -tp="$TP_VALUE" -np="$NP_VALUE" -rp="$RP_VALUE" -installer="$INSTALLER_VALUE" -s24x7-agent -da -psw 
+		bash Site24x7MonitoringAgent.install -i -key="$KEY_VALUE" -dn="$DN_VALUE" -gn="$GN_VALUE" -ct="$CT_VALUE" -tp="$TP_VALUE" -np="$NP_VALUE" -rp="$RP_VALUE" -installer="$INSTALLER_VALUE" -da -psw 
 	fi
 	if [ ! -f $SUPERVISOR_CONFD_FILE ]; then
 		cp $MON_AGENT_SUPERVISOR_CONF_FILE $SUPERVISOR_CONFD_FILE
@@ -130,5 +142,6 @@ constructInstallationParam(){
 INSTALL_DIR="/opt"
 variableUpdate
 getEnvValues
+startSSHServer
 constructInstallationParam
 exec "$@"
